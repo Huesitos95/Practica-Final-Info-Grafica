@@ -1,36 +1,28 @@
-// Std. Includes
 #include <string>
 
-// GLEW
 #define GLEW_STATIC
 #include <GL/glew.h>
-
-// GLFW
 #include <GLFW/glfw3.h>
 
-// GL includes
 #include "Shader.h"
 #include "Camara.h"
 #include "Model.h"
 
-// GLM Mathemtics
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
-// Other Libs
 #include <SOIL.h>
 
-// Properties
+//Screen size
 GLuint screenWidth = 800, screenHeight = 600;
 
-// Function prototypes
+//Interaction
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void Do_Movement();
 
-// Camera
+//Camera setup
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
@@ -39,7 +31,6 @@ bool firstMouse = true;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 
-// The MAIN function, from here we start our application and run our Game loop
 int main()
 {
 	// Init GLFW
@@ -73,12 +64,13 @@ int main()
 	// Setup and compile our shaders
 	Shader shader("ShaderVertex.vs", "ShaderFragment.frag");
 
-	// Load models
-	// CARGAR AQUI LOS MODELOS PARA LA ESCENA
-	//Model ourModel("./spider/spider.obj");
-
 	// Draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+	// CARGAR AQUI LOS MODELOS PARA LA ESCENA
+	Model Exterior("./Exterior/Exterior.obj");
+	//Model Taberna("./Taberna/Taberna.obj");
+	//Model Taberna1("./tavern_big/tavern_big.obj");
 
 	// Game loop
 	while (!glfwWindowShouldClose(window))
@@ -105,10 +97,15 @@ int main()
 
 		// Draw the loaded model
 		glm::mat4 model;
-		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // Translate it down a bit so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// It's a bit too big for our scene, so scale it down
+		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f)); 
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-		ourModel.Draw(shader);
+		
+		//Taberna.Draw(shader);
+		
+		Exterior.Draw(shader);
+
+		//Taberna1.Draw(shader);
 
 		// Swap the buffers
 		glfwSwapBuffers(window);
@@ -120,10 +117,9 @@ int main()
 
 #pragma region "User input"
 
-// Moves/alters the camera positions based on user input
 void Do_Movement()
 {
-	// Camera controls
+	// Camera control
 	if (keys[GLFW_KEY_W])
 		camera.ProcessKeyboard(FORWARD, deltaTime);
 	if (keys[GLFW_KEY_S])
@@ -134,7 +130,6 @@ void Do_Movement()
 		camera.ProcessKeyboard(RIGHT, deltaTime);
 }
 
-// Is called whenever a key is pressed/released via GLFW
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)

@@ -1,23 +1,19 @@
 #pragma once
-// Std. Includes
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <vector>
-using namespace std;
-// GL Includes
+
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+using namespace std;
 
 struct Vertex {
-	// Position
 	glm::vec3 Position;
-	// Normal
 	glm::vec3 Normal;
-	// TexCoords
 	glm::vec2 TexCoords;
 };
 
@@ -78,7 +74,6 @@ public:
 		glDrawElements(GL_TRIANGLES, this->indices.size(), GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
-		// Always good practice to set everything back to defaults once configured.
 		for (GLuint i = 0; i < this->textures.size(); i++)
 		{
 			glActiveTexture(GL_TEXTURE0 + i);

@@ -1,0 +1,35 @@
+﻿newmtl /Game/BEARD_KNIGHTS/Assets/Chair/chair_txt_Mat_chair_txt_Mat
+	map_Kd chair_txt_Mat_chair_txt_Mat_D.bmp
+	map_Ks chair_txt_Mat_chair_txt_Mat_S.bmp
+	bump chair_txt_Mat_chair_txt_Mat_N.bmp
+
+newmtl /Game/BEARD_KNIGHTS/Assets/Exterior/Wall/Wall_Wall
+	map_Kd Wall_Wall_D.bmp
+	map_Ks Wall_Wall_S.bmp
+	bump Wall_Wall_N.bmp
+
+newmtl /Game/BEARD_KNIGHTS/Assets/Textures/woodPlanks_3_Mat_woodPlanks_3_Mat
+	map_Kd woodPlanks_3_Mat_woodPlanks_3_Mat_D.bmp
+	map_Ks woodPlanks_3_Mat_woodPlanks_3_Mat_S.bmp
+	bump woodPlanks_3_Mat_woodPlanks_3_Mat_N.bmp
+
+newmtl /Game/BEARD_KNIGHTS/Assets/Table/table_txt_Mat_table_txt_Mat
+	map_Kd table_txt_Mat_table_txt_Mat_D.bmp
+	map_Ks table_txt_Mat_table_txt_Mat_S.bmp
+	bump table_txt_Mat_table_txt_Mat_N.bmp
+
+newmtl /Game/BEARD_KNIGHTS/Assets/Tirador/CuerpoMat_CuerpoMat
+	map_Kd CuerpoMat_CuerpoMat_D.bmp
+	map_Ks CuerpoMat_CuerpoMat_S.bmp
+	bump CuerpoMat_CuerpoMat_N.bmp
+
+newmtl /Game/BEARD_KNIGHTS/Assets/Tirador/Handle/TiradorMat_TiradorMat
+	map_Kd TiradorMat_TiradorMat_D.bmp
+	map_Ks TiradorMat_TiradorMat_S.bmp
+	bump TiradorMat_TiradorMat_N.bmp
+
+newmtl /Game/StarterContent/Materials/M_Water_Lake_M_Water_Lake
+	map_Kd M_Water_Lake_M_Water_Lake_D.bmp
+	map_Ks M_Water_Lake_M_Water_Lake_S.bmp
+	bump M_Water_Lake_M_Water_Lake_N.bmp
+
