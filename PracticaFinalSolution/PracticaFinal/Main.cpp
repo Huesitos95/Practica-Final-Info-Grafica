@@ -68,9 +68,11 @@ int main()
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	// CARGAR AQUI LOS MODELOS PARA LA ESCENA
-	Model Exterior("./Exterior/Exterior.obj");
-	//Model Taberna("./Taberna/Taberna.obj");
-	//Model Taberna1("./tavern_big/tavern_big.obj");
+	Model Spider("./Models/spider/spider.obj");
+	//Model Exterior("./Models/Exterior/Exterior.obj");
+	//Model Taberna("./Models/Taberna/Taberna.obj");
+	//Model Taberna1("./Models/tavern_big/tavern_big.obj");
+	
 
 	// Game loop
 	while (!glfwWindowShouldClose(window))
@@ -101,10 +103,16 @@ int main()
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
 		
+		//Escoger modelo
+
+		Spider.Draw(shader);
+
 		//Taberna.Draw(shader);
 		
-		Exterior.Draw(shader);
+		//Exterior.Draw(shader);
 
+		
+		
 		//Taberna1.Draw(shader);
 
 		// Swap the buffers
