@@ -40,7 +40,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(screenWidth, screenHeight, "LearnOpenGL", nullptr, nullptr); // Windowed
+	GLFWwindow* window = glfwCreateWindow(screenWidth, screenHeight, "Screen Space Ambient Occlusion", nullptr, nullptr); 
 	glfwMakeContextCurrent(window);
 
 	// Set the required callback functions
@@ -144,9 +144,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
-		cout << "x" << camera.Position.x;
-		cout << "y" << camera.Position.y;
-		cout << "z" << camera.Position.z;
+	{
+		cout << camera.Yaw << endl;
+	}
 
 	if (action == GLFW_PRESS)
 		keys[key] = true;
