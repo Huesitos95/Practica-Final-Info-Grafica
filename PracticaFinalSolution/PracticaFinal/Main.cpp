@@ -23,7 +23,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void Do_Movement();
 
 //Camera setup
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(-37.0f, 5.0f, -2.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -142,6 +142,11 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+		cout << "x" << camera.Position.x;
+		cout << "y" << camera.Position.y;
+		cout << "z" << camera.Position.z;
 
 	if (action == GLFW_PRESS)
 		keys[key] = true;
