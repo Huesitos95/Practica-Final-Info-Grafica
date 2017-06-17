@@ -31,6 +31,15 @@ bool firstMouse = true;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 
+
+//Selección luces
+GLboolean ambientLight = true;
+GLboolean pointLight = false;
+GLboolean coneLight = false;
+
+//Mover Araña
+float spiderPos;
+
 int main()
 {
 	// Init GLFW
@@ -69,6 +78,7 @@ int main()
 
 	// CARGAR AQUI LOS MODELOS PARA LA ESCENA
 	Model Spider("./Models/spider/spider.obj");
+	
 	//Model Exterior("./Models/Exterior/Exterior.obj");
 	//Model Taberna("./Models/Taberna/Taberna.obj");
 	//Model Taberna1("./Models/tavern_big/tavern_big.obj");
@@ -96,24 +106,18 @@ int main()
 		glm::mat4 view = camera.GetViewMatrix();
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-
 		// Draw the loaded model
+		// Do for every model in the scene
 		glm::mat4 model;
-		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f)); 
+		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f+ spiderPos));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	
 		glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-		
-		//Escoger modelo
-
 		Spider.Draw(shader);
 
 		//Taberna.Draw(shader);
-		
-		//Exterior.Draw(shader);
-
-		
-		
+		//Exterior.Draw(shader);		
 		//Taberna1.Draw(shader);
+
 
 		// Swap the buffers
 		glfwSwapBuffers(window);
@@ -143,9 +147,36 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
 
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+	//Mover Araña
+	if (key == GLFW_KEY_Q)
 	{
-		cout << camera.Yaw << endl;
+		spiderPos -= 1;
+		cout << spiderPos << endl;
+	}
+	if (key == GLFW_KEY_E)
+	{
+		spiderPos += 1;
+		cout << spiderPos << endl;
+	}
+
+	//Escoger luces
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+	{
+		ambientLight = true;
+		pointLight = false;
+		coneLight = false;
+	}
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+	{
+		ambientLight = true;
+		pointLight = false;
+		coneLight = false;
+	}
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
+	{
+		ambientLight = true;
+		pointLight = false;
+		coneLight = false;
 	}
 
 	if (action == GLFW_PRESS)
