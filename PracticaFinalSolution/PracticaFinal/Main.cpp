@@ -31,12 +31,6 @@ bool firstMouse = true;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 
-
-//Selección luces
-GLboolean ambientLight = true;
-GLboolean pointLight = false;
-GLboolean coneLight = false;
-
 //Mover Araña
 float spiderPos;
 
@@ -83,6 +77,7 @@ int main()
 	//Model Taberna("./Models/Taberna/Taberna.obj");
 	//Model Taberna1("./Models/tavern_big/tavern_big.obj");
 	
+	glUniform3f(glGetUniformLocation(shader.Program, "viewerPosition"), camera.Position.x,camera.Position.y,camera.Position.z);
 
 	// Game loop
 	while (!glfwWindowShouldClose(window))
@@ -157,26 +152,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	{
 		spiderPos += 1;
 		cout << spiderPos << endl;
-	}
-
-	//Escoger luces
-	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
-	{
-		ambientLight = true;
-		pointLight = false;
-		coneLight = false;
-	}
-	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
-	{
-		ambientLight = true;
-		pointLight = false;
-		coneLight = false;
-	}
-	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
-	{
-		ambientLight = true;
-		pointLight = false;
-		coneLight = false;
 	}
 
 	if (action == GLFW_PRESS)

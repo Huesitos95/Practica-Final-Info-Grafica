@@ -15,7 +15,7 @@ uniform vec3 viewerPosition;
 // Direction of the light
 vec3 dir = normalize(vec3(0.75, -0.75, 0.75));
 // Color of the light
-vec3 amb = vec3(0.0, 1.0, 0.0);
+vec3 amb = vec3(1.0, 1.0, 1.0);
 
 
 // PointLight
@@ -60,13 +60,13 @@ vec4 pointLight() {
 	float c1 = 1.0;
 	float c2 = 0.7;
 	float c3 = 1.8;
-	float att = 1.0 / (c1 + c2 * dist + c3 *(dist * dist));
+	float att = 1.0 / (c1 + c2 * distance + c3 *(distance * distance));
 	return vec4(ambient + diff+ spec, 1.0)* att;
 }
 
 void main()
 {   
-	color = directionalLight();
+	//color = directionalLight();
 	//color = pointLight();
-	//color = directionalLight() + pointLight();
+	color = directionalLight() + pointLight();
 }
